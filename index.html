@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cole Fikse — Content Strategist</title>
+<meta name="description" content="Cole Fikse — content strategist based in San Diego. Selected work, capabilities, and toolkit." />
+
+<style>
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #FFFFFF;
+  --ink: #1A1A1A;
+  --ink-muted: #555555;
+  --ink-faint: #8E8E8E;
+  --accent: #7C2A35;
+  --accent-hover: #5C1F27;
+  --rule: #E5E2DC;
+  --placeholder-bg: #F6F3EC;
+  --placeholder-border: #D6D1C5;
+
+  --serif: Georgia, "Times New Roman", Times, serif;
+
+  --max-w: 1100px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.075rem);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--accent); color: #fff; }
+
+.wrap {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ============================================
+   TOP BAR (with avatar)
+   ============================================ */
+.topbar {
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.topbar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  flex-shrink: 0;
+  display: block;
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 1.05rem;
+  letter-spacing: -0.005em;
+}
+
+.brand .accent { color: var(--accent); }
+
+.topnav {
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.topnav a {
+  color: var(--ink-muted);
+  position: relative;
+  transition: color 0.2s ease;
+}
+.topnav a:hover { color: var(--accent); }
+.topnav a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.topnav a:hover::after { transform: scaleX(1); }
+
+@media (max-width: 600px) {
+  .topnav { gap: 1.25rem; font-size: 0.88rem; }
+  .avatar { width: 32px; height: 32px; }
+}
+
+/* ============================================
+   HERO / INTRO
+   ============================================ */
+.hero {
+  padding-top: clamp(3rem, 8vh, 5.5rem);
+  padding-bottom: clamp(2.5rem, 6vh, 4rem);
+}
+
+.hero-name {
+  font-size: clamp(2.6rem, 6.5vw, 4.75rem);
+  font-weight: bold;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.85rem;
+}
+
+.hero-role {
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+  color: var(--accent);
+  margin-bottom: 2rem;
+  letter-spacing: -0.005em;
+  font-weight: bold;
+}
+
+.hero-intro {
+  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 62ch;
+}
+
+.hero-intro strong { color: var(--accent); font-weight: bold; }
+
+/* ============================================
+   FEATURED WORK (top gallery)
+   ============================================ */
+.featured {
+  padding-top: clamp(2rem, 5vh, 3rem);
+  padding-bottom: clamp(3rem, 6vh, 4.5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.featured-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.featured-title {
+  font-size: clamp(1.4rem, 2vw, 1.75rem);
+  font-weight: bold;
+  letter-spacing: -0.015em;
+  position: relative;
+  padding-bottom: 0.85rem;
+}
+
+.featured-title::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 36px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.featured-sub {
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.featured-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.featured-tile-media {
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  background: var(--placeholder-bg);
+}
+
+.featured-tile-caption {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.featured-tile-caption strong {
+  color: var(--accent);
+  font-weight: bold;
+  font-style: normal;
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+@media (max-width: 700px) {
+  .featured-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 460px) {
+  .featured-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   MEDIA PLACEHOLDER (shared)
+   ============================================ */
+.media-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--placeholder-bg);
+  border: 1.5px dashed var(--placeholder-border);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 1rem;
+  gap: 0.4rem;
+}
+
+.media-placeholder svg {
+  width: 28px;
+  height: 28px;
+  opacity: 0.55;
+}
+
+.media-placeholder .ph-label {
+  font-size: 0.78rem;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  color: var(--ink-muted);
+}
+
+.media-placeholder .ph-hint {
+  font-size: 0.68rem;
+  font-style: normal;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+
+/* When real video/img is dropped in, fill the box */
+.media-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section {
+  padding-block: clamp(3rem, 7vh, 5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.section-title {
+  font-size: clamp(1.4rem, 2vw, 1.75rem);
+  font-weight: bold;
+  letter-spacing: -0.015em;
+  margin-bottom: 2.25rem;
+  position: relative;
+  padding-bottom: 0.85rem;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 36px;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* ============================================
+   SELECTED WORK (with media placeholder)
+   ============================================ */
+.work-list { display: flex; flex-direction: column; }
+
+.work-item {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  padding-block: clamp(1.75rem, 3.5vh, 2.5rem);
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+
+.work-item:last-child { border-bottom: none; padding-bottom: 0; }
+.work-item:first-child { padding-top: 0; }
+
+.work-content { min-width: 0; }
+
+.work-cat {
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.55rem;
+}
+
+.work-title {
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-weight: bold;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+}
+
+.work-desc {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  margin-bottom: 1rem;
+}
+
+.work-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 1.75rem;
+  align-items: baseline;
+}
+
+.work-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.work-stat-num {
+  font-size: clamp(1.2rem, 1.7vw, 1.55rem);
+  font-weight: bold;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.work-stat-label {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.work-media {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  position: relative;
+}
+
+@media (max-width: 800px) {
+  .work-item {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .work-media { aspect-ratio: 1 / 1; max-width: 320px; }
+}
+
+/* ============================================
+   CONTENT GALLERY (more examples)
+   ============================================ */
+.gallery-section {
+  padding-block: clamp(3rem, 7vh, 5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.gallery-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.75rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.gallery-head .section-title { margin-bottom: 0; }
+
+.gallery-sub {
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.5rem, 1vw, 0.85rem);
+}
+
+.gallery-tile {
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-tile.tall { aspect-ratio: 4 / 5; }
+
+@media (max-width: 800px) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .gallery-tile.tall { aspect-ratio: 1 / 1; }
+}
+@media (max-width: 500px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================================
+   CAPABILITIES
+   ============================================ */
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.cap {
+  border-top: 2px solid var(--ink);
+  padding-top: 1.1rem;
+}
+
+.cap-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.01em;
+}
+
+.cap-body {
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+  margin-bottom: 1rem;
+}
+
+.cap-list {
+  list-style: none;
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: var(--ink);
+}
+
+.cap-list li::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 0.55rem;
+  font-weight: bold;
+}
+
+@media (max-width: 800px) {
+  .cap-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+}
+
+/* ============================================
+   TOOLKIT
+   ============================================ */
+.tool-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tool-group {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  gap: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+}
+
+.tool-group:last-child { border-bottom: none; padding-bottom: 0; }
+
+.tool-group-name {
+  font-size: 0.78rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.tool-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.tool-tags span:not(:last-child)::after {
+  content: " · ";
+  color: var(--ink-faint);
+  margin: 0 0.6rem;
+}
+
+@media (max-width: 700px) {
+  .tool-group { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+
+/* ============================================
+   CONNECT
+   ============================================ */
+.contact {
+  padding-block: clamp(3.5rem, 8vh, 5.5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.contact-headline {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: bold;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 2rem;
+}
+
+.contact-headline .accent { color: var(--accent); }
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.5rem;
+  width: max-content;
+  max-width: 100%;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.contact-link-label {
+  font-size: 0.78rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-style: normal;
+}
+
+.contact-link-val {
+  font-style: italic;
+  color: var(--ink);
+  word-break: break-word;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  border-top: 1px solid var(--rule);
+  padding-block: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.fade-up.in { opacity: 1; transform: translateY(0); }
+
+.hero-name, .hero-role, .hero-intro {
+  opacity: 0;
+  animation: riseIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.hero-name  { animation-delay: 0.05s; }
+.hero-role  { animation-delay: 0.2s;  }
+.hero-intro { animation-delay: 0.35s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .fade-up { opacity: 1; transform: none; }
+}
+
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+</style>
+</head>
+<body>
+
+<!-- =====================================
+     TOP BAR
+     ===================================== -->
+<header class="topbar">
+  <div class="wrap topbar-row">
+    <div class="brand-block">
+      <img class="avatar" src="cole-headshot.jpg" alt="Cole Fikse" />
+      <span class="brand">Cole Fikse<span class="accent">.</span></span>
+    </div>
+    <nav class="topnav">
+      <a href="#about">About</a>
+      <a href="#featured">Featured</a>
+      <a href="#work">Selected Work</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#connect">Connect</a>
+    </nav>
+  </div>
+</header>
+
+<!-- =====================================
+     HERO
+     ===================================== -->
+<section class="hero" id="about">
+  <div class="wrap">
+    <h1 class="hero-name">Cole Fikse</h1>
+    <p class="hero-role">Content Strategist</p>
+    <p class="hero-intro">I'm a content strategist who blends <strong>creative thinking</strong> with <strong>data</strong>. Currently at Fidelitas — a marketing agency in San Diego — I lead organic social and email strategy for client accounts across a wide range of industries. I'm focused on <strong>leading clients strategically</strong> while thriving within <strong>high-performing teams</strong>.</p>
+  </div>
+</section>
+
+<!-- =====================================
+     FEATURED WORK (top gallery)
+     ===================================== -->
+<section class="featured" id="featured">
+  <div class="wrap">
+    <div class="featured-head">
+      <h2 class="featured-title">Featured</h2>
+      <span class="featured-sub">A few highlights up top</span>
+    </div>
+
+    <div class="featured-grid">
+
+      <!-- Featured tile 1: vertical video -->
+      <div class="featured-tile">
+        <div class="featured-tile-media">
+          <!-- REPLACE WITH AUTOPLAY VIDEO:
+               <video class="media-fill" autoplay muted loop playsinline preload="metadata" poster="poster1.jpg">
+                 <source src="featured-1.mp4" type="video/mp4" />
+               </video>
+          -->
+          <div class="media-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
+            <span class="ph-label">Featured video</span>
+            <span class="ph-hint">Vertical, 4:5</span>
+          </div>
+        </div>
+        <p class="featured-tile-caption">
+          <strong>Reel · Outdoor Gear</strong>
+          Education-first short-form that drove 108% follower growth.
+        </p>
+      </div>
+
+      <!-- Featured tile 2: image post -->
+      <div class="featured-tile">
+        <div class="featured-tile-media">
+          <!-- REPLACE WITH IMAGE: <img class="media-fill" src="featured-2.jpg" alt="..." /> -->
+          <div class="media-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
+            <span class="ph-label">Carousel post</span>
+            <span class="ph-hint">Image or carousel</span>
+          </div>
+        </div>
+        <p class="featured-tile-caption">
+          <strong>Carousel · Beauty-Tech</strong>
+          Investor-facing LinkedIn that lifted engagement 350%.
+        </p>
+      </div>
+
+      <!-- Featured tile 3: vertical video -->
+      <div class="featured-tile">
+        <div class="featured-tile-media">
+          <!-- REPLACE WITH AUTOPLAY VIDEO:
+               <video class="media-fill" autoplay muted loop playsinline preload="metadata" poster="poster3.jpg">
+                 <source src="featured-3.mp4" type="video/mp4" />
+               </video>
+          -->
+          <div class="media-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
+            <span class="ph-label">Featured video</span>
+            <span class="ph-hint">Vertical, 4:5</span>
+          </div>
+        </div>
+        <p class="featured-tile-caption">
+          <strong>Reel · Sports</strong>
+          Gameday content for a record-breaking season.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =====================================
+     SELECTED WORK
+     ===================================== -->
+<section class="section" id="work">
+  <div class="wrap">
+    <h2 class="section-title">Selected Work</h2>
+
+    <div class="work-list">
+
+      <!-- Work item 1 -->
+      <article class="work-item">
+        <div class="work-content">
+          <div class="work-cat">Video / UGC Strategy</div>
+          <h3 class="work-title">UGC video tuned to customer pain points</h3>
+          <p class="work-desc">Conceptualized, filmed, and edited UGC-style short-form video built around real customer pain points — turning support and review themes into hook-first content for Instagram and YouTube.</p>
+          <div class="work-stats">
+            <div class="work-stat"><span class="work-stat-num">+197%</span><span class="work-stat-label">Instagram impressions</span></div>
+            <div class="work-stat"><span class="work-stat-num">+395%</span><span class="work-stat-label">YouTube views</span></div>
+          </div>
+        </div>
+        <div class="work-media">
+          <!-- REPLACE WITH VIDEO: <video class="media-fill" autoplay muted loop playsinline><source src="work-1.mp4" type="video/mp4"></video> -->
+          <div class="media-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
+            <span class="ph-label">UGC video</span>
+            <span class="ph-hint">.mp4, autoplays muted</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Work item 2 -->
+      <article class="work-item">
+        <div class="work-content">
+          <div class="work-cat">B2B / LinkedIn</div>
+          <h3 class="work-title">Investor-focused LinkedIn for a beauty-tech startup</h3>
+          <p class="work-desc">Repositioned the brand around AI innovation and category disruption to win attention from a finance audience instead of an end-consumer one — and built a content cadence that backed it up.</p>
+          <div class="work-stats">
+            <div class="work-stat"><span class="work-stat-num">+350%</span><span class="work-stat-label">Engagement lift</span></div>
+          </div>
+        </div>
+        <div class="work-media">
+          <!-- REPLACE WITH IMAGE: <img class="media-fill" src="work-2.jpg" alt="LinkedIn post" /> -->
+          <div class="media-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
+            <span class="ph-label">LinkedIn carousel</span>
+            <span class="ph-hint">Image or carousel</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Work item 3 -->
+      <article class="work-item">
+        <div class="work-content">
+          <div class="work-cat">Sports / Live Content</div>
+          <h3 class="work-title">Record-breaking season for a minor league basketball team</h3>
+          <p class="work-desc">Captured, edited, and published every in-season moment for a minor league basketball team, turning gameday energy into a year-round audience and helping drive a record-breaking attendance season.</p>
+          <div class="work-stats">
+            <div class="work-stat"><span class="work-stat-num">+188%</span><span class="work-stat-label">Instagram views</span></div>
+            <div class="work-stat"><span class="work-stat-num">+288%</span><span class="work-stat-label">Engagements</span></div>
+          </div>
+        </div>
+        <div class="work-media">
+          <!-- REPLACE WITH VIDEO: <video class="media-fill" autoplay muted loop playsinline><source src="work-3.mp4" type="video/mp4"></video> -->
+          <div class="media-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
+            <span class="ph-label">Gameday Reel</span>
+            <span class="ph-hint">.mp4, autoplays muted</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Work item 4 -->
+      <article class="work-item">
+        <div class="work-content">
+          <div class="work-cat">Email / CRM</div>
+          <h3 class="work-title">Email program rebuilt for mobile-first audiences</h3>
+          <p class="work-desc">Reworked a client's email program around mobile-first design and a sharper editorial voice. Cleaner hierarchy, fewer asks per send, and copy that earned the click instead of demanding it.</p>
+          <div class="work-stats">
+            <div class="work-stat"><span class="work-stat-num">+261%</span><span class="work-stat-label">CTR year-over-year</span></div>
+          </div>
+        </div>
+        <div class="work-media">
+          <!-- REPLACE WITH IMAGE: <img class="media-fill" src="work-4.jpg" alt="Email mockup" /> -->
+          <div class="media-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><polyline points="3,7 12,13 21,7"/></svg>
+            <span class="ph-label">Email screenshot</span>
+            <span class="ph-hint">Mobile mockup, .png/.jpg</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Work item 5 -->
+      <article class="work-item">
+        <div class="work-content">
+          <div class="work-cat">Lifecycle / A/B at Scale</div>
+          <h3 class="work-title">A/B testing across a 100,000+ contact subscription brand</h3>
+          <p class="work-desc">Implemented an A/B testing framework, design-system consistency, and message-clarity passes across automated flows. Compounding monthly gains, not one-off wins.</p>
+          <div class="work-stats">
+            <div class="work-stat"><span class="work-stat-num">+12.5%</span><span class="work-stat-label">MoM conversions</span></div>
+            <div class="work-stat"><span class="work-stat-num">+44.3%</span><span class="work-stat-label">MoM activations</span></div>
+          </div>
+        </div>
+        <div class="work-media">
+          <!-- REPLACE WITH IMAGE: <img class="media-fill" src="work-5.jpg" alt="A/B test variants" /> -->
+          <div class="media-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20V8m6 12V4m6 16v-8m6 8V12"/></svg>
+            <span class="ph-label">Test variant set</span>
+            <span class="ph-hint">A/B comparison, image</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Work item 6 -->
+      <article class="work-item">
+        <div class="work-content">
+          <div class="work-cat">Organic Growth / DTC</div>
+          <h3 class="work-title">108% Instagram growth in seven months</h3>
+          <p class="work-desc">Built an education-first content engine for an outdoor gear subscription brand — carousels and short-form video paired with ManyChat automation that turned engagement into subscription conversions.</p>
+          <div class="work-stats">
+            <div class="work-stat"><span class="work-stat-num">+108%</span><span class="work-stat-label">Instagram followers in 7 months</span></div>
+          </div>
+        </div>
+        <div class="work-media">
+          <!-- REPLACE WITH IMAGE/VIDEO -->
+          <div class="media-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
+            <span class="ph-label">Education carousel</span>
+            <span class="ph-hint">Image, video, or carousel</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =====================================
+     CONTENT GALLERY (more examples)
+     ===================================== -->
+<section class="gallery-section" id="gallery">
+  <div class="wrap">
+    <div class="gallery-head">
+      <h2 class="section-title">More Content</h2>
+      <span class="gallery-sub">A wider sampling of recent work</span>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Each tile: replace placeholder div with <img class="media-fill" src="..." /> or <video class="media-fill" autoplay muted loop playsinline><source src="..." type="video/mp4"></video> -->
+
+      <div class="gallery-tile">
+        <div class="media-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
+          <span class="ph-label">Image</span>
+        </div>
+      </div>
+
+      <div class="gallery-tile">
+        <div class="media-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
+          <span class="ph-label">Video</span>
+        </div>
+      </div>
+
+      <div class="gallery-tile">
+        <div class="media-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
+          <span class="ph-label">Image</span>
+        </div>
+      </div>
+
+      <div class="gallery-tile">
+        <div class="media-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
+          <span class="ph-label">Video</span>
+        </div>
+      </div>
+
+      <div class="gallery-tile">
+        <div class="media-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
+          <span class="ph-label">Image</span>
+        </div>
+      </div>
+
+      <div class="gallery-tile">
+        <div class="media-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
+          <span class="ph-label">Video</span>
+        </div>
+      </div>
+
+      <div class="gallery-tile">
+        <div class="media-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
+          <span class="ph-label">Image</span>
+        </div>
+      </div>
+
+      <div class="gallery-tile">
+        <div class="media-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
+          <span class="ph-label">Image</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =====================================
+     CAPABILITIES
+     ===================================== -->
+<section class="section" id="capabilities">
+  <div class="wrap">
+    <h2 class="section-title">Capabilities</h2>
+
+    <div class="cap-grid">
+      <div class="cap">
+        <h3 class="cap-title">Organic Social</h3>
+        <p class="cap-body">End-to-end ownership of strategy through reporting across Instagram, TikTok, LinkedIn, Facebook, YouTube, and X.</p>
+        <ul class="cap-list">
+          <li>Strategy &amp; calendars</li>
+          <li>Short-form video</li>
+          <li>Community management</li>
+          <li>Reporting &amp; insights</li>
+        </ul>
+      </div>
+
+      <div class="cap">
+        <h3 class="cap-title">Content &amp; Video</h3>
+        <p class="cap-body">Concept, script, film, and edit — UGC-style and brand-led — tuned to platform-native hooks and pain-point storytelling.</p>
+        <ul class="cap-list">
+          <li>UGC &amp; brand video</li>
+          <li>Short-form editing</li>
+          <li>Copy &amp; scripts</li>
+          <li>Influencer collaboration</li>
+        </ul>
+      </div>
+
+      <div class="cap">
+        <h3 class="cap-title">Email &amp; Lifecycle</h3>
+        <p class="cap-body">Mobile-first design, A/B testing frameworks, and message clarity for newsletters, automations, and subscription flows.</p>
+        <ul class="cap-list">
+          <li>Klaviyo flows</li>
+          <li>Newsletter strategy</li>
+          <li>A/B testing</li>
+          <li>Performance reporting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================
+     TOOLKIT
+     ===================================== -->
+<section class="section" id="toolkit">
+  <div class="wrap">
+    <h2 class="section-title">Toolkit</h2>
+
+    <div class="tool-groups">
+      <div class="tool-group">
+        <div class="tool-group-name">Social &amp; Scheduling</div>
+        <div class="tool-tags">
+          <span>Sprout Social</span><span>ManyChat</span><span>Meta Business Suite</span><span>LinkedIn Campaign Manager</span>
+        </div>
+      </div>
+
+      <div class="tool-group">
+        <div class="tool-group-name">Content &amp; Design</div>
+        <div class="tool-tags">
+          <span>Canva</span><span>CapCut</span><span>Edits</span><span>Adobe Premiere Pro</span><span>WordPress</span>
+        </div>
+      </div>
+
+      <div class="tool-group">
+        <div class="tool-group-name">Email &amp; CRM</div>
+        <div class="tool-tags">
+          <span>Klaviyo</span><span>Constant Contact</span><span>HubSpot</span>
+        </div>
+      </div>
+
+      <div class="tool-group">
+        <div class="tool-group-name">Analytics &amp; Data</div>
+        <div class="tool-tags">
+          <span>Google Analytics</span><span>Tableau</span><span>PowerBI</span><span>Excel</span><span>Python</span><span>MRI Simmons</span>
+        </div>
+      </div>
+
+      <div class="tool-group">
+        <div class="tool-group-name">AI &amp; Workflow</div>
+        <div class="tool-tags">
+          <span>ChatGPT</span><span>Claude</span><span>Google AI Studio</span><span>Wrike</span><span>ClickUp</span>
+        </div>
+      </div>
+
+      <div class="tool-group">
+        <div class="tool-group-name">Certifications</div>
+        <div class="tool-tags">
+          <span>Google Ads Search</span><span>HubSpot Inbound Marketing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================
+     CONNECT
+     ===================================== -->
+<section class="contact" id="connect">
+  <div class="wrap">
+    <h2 class="contact-headline">Let's connect<span class="accent">!</span></h2>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:jonathancfikse@gmail.com">
+        <span class="contact-link-label">Email</span>
+        <span class="contact-link-val">jonathancfikse@gmail.com</span>
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/cole-fikse" target="_blank" rel="noopener">
+        <span class="contact-link-label">LinkedIn</span>
+        <span class="contact-link-val">linkedin.com/in/cole-fikse</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================
+     FOOTER
+     ===================================== -->
+<footer class="footer">
+  <div class="wrap footer-row">
+    <span>© Cole Fikse</span>
+    <span>San Diego, California</span>
+  </div>
+</footer>
+
+<script>
+(function() {
+  if (!('IntersectionObserver' in window)) return;
+  const els = document.querySelectorAll('.section, .featured, .gallery-section, .work-item, .featured-tile, .gallery-tile, .cap, .tool-group, .contact');
+  els.forEach(el => el.classList.add('fade-up'));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => obs.observe(el));
+})();
+</script>
+
+</body>
+</html>
