@@ -74,8 +74,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .avatar {
-  width: 38px;
-  height: 38px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--rule);
@@ -118,7 +118,7 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 600px) {
   .topnav { gap: 1.1rem; font-size: 0.85rem; }
-  .avatar { width: 32px; height: 32px; }
+  .avatar { width: 48px; height: 48px; }
 }
 
 /* ============================================
@@ -390,12 +390,15 @@ a { color: inherit; text-decoration: none; }
   position: relative;
 }
 
+.work-media--email { aspect-ratio: 2 / 3; }
+
 @media (max-width: 800px) {
   .work-item {
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
   .work-media { aspect-ratio: 1 / 1; max-width: 320px; }
+  .work-media--email { aspect-ratio: 2 / 3; max-width: 280px; }
 }
 
 /* ============================================
@@ -425,89 +428,73 @@ a { color: inherit; text-decoration: none; }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(0.5rem, 1vw, 0.85rem);
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(0.5rem, 1vw, 0.85rem) clamp(0.4rem, 0.85vw, 0.7rem);
+  grid-auto-flow: dense;
 }
 
 .gallery-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease;
+  min-width: 0;
+}
+
+.gallery-tile:hover { transform: translateY(-2px); }
+.gallery-tile:hover .gallery-tile-caption { color: var(--accent); }
+
+.gallery-tile-media {
   aspect-ratio: 1 / 1;
   border-radius: 4px;
   overflow: hidden;
   position: relative;
-}
-
-.gallery-tile.tall { aspect-ratio: 4 / 5; }
-
-@media (max-width: 800px) {
-  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-  .gallery-tile.tall { aspect-ratio: 1 / 1; }
-}
-@media (max-width: 500px) {
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* ============================================
-   WRITING SAMPLES
-   ============================================ */
-.writing-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1rem, 2.5vw, 1.75rem);
-}
-
-.writing-card {
   background: var(--placeholder-bg);
-  border-left: 3px solid var(--accent);
-  border-radius: 4px;
-  padding: clamp(1.25rem, 2.5vw, 1.75rem);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.writing-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(26, 24, 21, 0.08);
+.gallery-tile-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.writing-tag {
-  font-size: 0.72rem;
-  font-weight: bold;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
+.gallery-tile-media.is-video::after {
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 8px;
+  border-color: transparent transparent transparent #fff;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.6));
+  opacity: 0.95;
 }
 
-.writing-title {
-  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
-  font-weight: bold;
-  letter-spacing: -0.01em;
-  line-height: 1.3;
-}
-
-.writing-desc {
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: var(--ink-muted);
-  flex-grow: 1;
-}
-
-.writing-link {
-  font-size: 0.92rem;
+.gallery-tile-caption {
+  font-size: 0.66rem;
   font-style: italic;
-  color: var(--accent);
-  font-weight: bold;
-  border-bottom: 1px solid transparent;
-  align-self: flex-start;
-  transition: border-color 0.2s ease;
-  padding-bottom: 1px;
+  color: var(--ink-faint);
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
 }
 
-.writing-link:hover { border-bottom-color: var(--accent); }
+/* Aspect variants (no size emphasis - all single-column) */
+.gallery-tile--tall .gallery-tile-media { aspect-ratio: 4 / 5; }
+.gallery-tile--email .gallery-tile-media { aspect-ratio: 3 / 5; }
 
-@media (max-width: 700px) {
-  .writing-grid { grid-template-columns: 1fr; }
+@media (max-width: 900px) {
+  .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 640px) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 420px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ============================================
@@ -750,39 +737,29 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
         </p>
       </div>
 
-      <!-- Featured tile 2: image post -->
+      <!-- Featured tile 2: Unboxing video -->
       <div class="featured-tile">
         <div class="featured-tile-media">
-          <!-- REPLACE WITH IMAGE: <img class="media-fill" src="featured-2.jpg" alt="..." /> -->
-          <div class="media-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
-            <span class="ph-label">Carousel post</span>
-            <span class="ph-hint">Image or carousel</span>
-          </div>
+          <video class="media-fill" autoplay muted loop playsinline preload="metadata">
+            <source src="featured-2.mp4" type="video/mp4" />
+          </video>
         </div>
         <p class="featured-tile-caption">
-          <strong>Carousel · Beauty-Tech</strong>
-          Investor-facing LinkedIn that lifted engagement 350%.
+          <strong>Unboxing · DTC</strong>
+          A short-form unboxing edit that primed first impressions of the product.
         </p>
       </div>
 
-      <!-- Featured tile 3: vertical video -->
+      <!-- Featured tile 3: Sports Highlight video -->
       <div class="featured-tile">
         <div class="featured-tile-media">
-          <!-- REPLACE WITH AUTOPLAY VIDEO:
-               <video class="media-fill" autoplay muted loop playsinline preload="metadata" poster="poster3.jpg">
-                 <source src="featured-3.mp4" type="video/mp4" />
-               </video>
-          -->
-          <div class="media-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
-            <span class="ph-label">Featured video</span>
-            <span class="ph-hint">Vertical, 4:5</span>
-          </div>
+          <video class="media-fill" autoplay muted loop playsinline preload="metadata">
+            <source src="featured-3.mp4" type="video/mp4" />
+          </video>
         </div>
         <p class="featured-tile-caption">
-          <strong>Reel · Sports</strong>
-          Gameday content for a record-breaking season.
+          <strong>Highlight · Sports</strong>
+          Gameday highlight edit captured and cut for social.
         </p>
       </div>
 
@@ -799,7 +776,22 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
     <div class="work-list">
 
-      <!-- Work item 1 -->
+      <!-- Work item 1: 108% Instagram growth (was item 6, now first) -->
+      <article class="work-item">
+        <div class="work-content">
+          <div class="work-cat">Organic Growth / DTC</div>
+          <h3 class="work-title">108% Instagram growth in seven months</h3>
+          <p class="work-desc">Created education-first content for an outdoor gear subscription brand through carousels and short-form video, paired with ManyChat automation, that turned engagement into subscription conversions and increased LTV.</p>
+          <div class="work-stats">
+            <div class="work-stat"><span class="work-stat-num">+108%</span><span class="work-stat-label">Instagram followers in 7 months</span></div>
+          </div>
+        </div>
+        <div class="work-media">
+          <img class="media-fill" src="5-pillars-carousel.jpg" alt="Five Pillars carousel feature image" />
+        </div>
+      </article>
+
+      <!-- Work item 2: UGC video tuned to customer pain points -->
       <article class="work-item">
         <div class="work-content">
           <div class="work-cat">Video / UGC Strategy</div>
@@ -811,57 +803,13 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
           </div>
         </div>
         <div class="work-media">
-          <!-- REPLACE WITH VIDEO: <video class="media-fill" autoplay muted loop playsinline><source src="work-1.mp4" type="video/mp4"></video> -->
-          <div class="media-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
-            <span class="ph-label">UGC video</span>
-            <span class="ph-hint">.mp4, autoplays muted</span>
-          </div>
+          <video class="media-fill" autoplay muted loop playsinline preload="metadata">
+            <source src="ugc-controversial.mp4" type="video/mp4" />
+          </video>
         </div>
       </article>
 
-      <!-- Work item 2 -->
-      <article class="work-item">
-        <div class="work-content">
-          <div class="work-cat">B2B / LinkedIn</div>
-          <h3 class="work-title">Investor-focused LinkedIn for a beauty-tech startup</h3>
-          <p class="work-desc">Repositioned the brand around AI innovation and category disruption to win attention from a finance audience instead of an end-consumer one.</p>
-          <div class="work-stats">
-            <div class="work-stat"><span class="work-stat-num">+350%</span><span class="work-stat-label">Engagement lift</span></div>
-          </div>
-        </div>
-        <div class="work-media">
-          <!-- REPLACE WITH IMAGE: <img class="media-fill" src="work-2.jpg" alt="LinkedIn post" /> -->
-          <div class="media-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
-            <span class="ph-label">LinkedIn carousel</span>
-            <span class="ph-hint">Image or carousel</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Work item 3 -->
-      <article class="work-item">
-        <div class="work-content">
-          <div class="work-cat">Sports / Live Content</div>
-          <h3 class="work-title">Event-focused content for a minor league basketball franchise</h3>
-          <p class="work-desc">Captured, edited, and published content for a minor league basketball team, creating a year-round audience and helping drive a record-breaking attendance season.</p>
-          <div class="work-stats">
-            <div class="work-stat"><span class="work-stat-num">+188%</span><span class="work-stat-label">Instagram views</span></div>
-            <div class="work-stat"><span class="work-stat-num">+288%</span><span class="work-stat-label">Engagements</span></div>
-          </div>
-        </div>
-        <div class="work-media">
-          <!-- REPLACE WITH VIDEO: <video class="media-fill" autoplay muted loop playsinline><source src="work-3.mp4" type="video/mp4"></video> -->
-          <div class="media-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
-            <span class="ph-label">Gameday Reel</span>
-            <span class="ph-hint">.mp4, autoplays muted</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Work item 4 -->
+      <!-- Work item 3: Email program rebuilt for mobile-first audiences -->
       <article class="work-item">
         <div class="work-content">
           <div class="work-cat">Email / CRM</div>
@@ -871,85 +819,10 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
             <div class="work-stat"><span class="work-stat-num">+261%</span><span class="work-stat-label">CTR year-over-year</span></div>
           </div>
         </div>
-        <div class="work-media">
-          <!-- REPLACE WITH IMAGE: <img class="media-fill" src="work-4.jpg" alt="Email mockup" /> -->
-          <div class="media-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><polyline points="3,7 12,13 21,7"/></svg>
-            <span class="ph-label">Email screenshot</span>
-            <span class="ph-hint">Mobile mockup, .png/.jpg</span>
-          </div>
+        <div class="work-media work-media--email">
+          <img class="media-fill" src="sports-team-email.jpg" alt="Sports team gameday email design" />
         </div>
       </article>
-
-      <!-- Work item 5 -->
-      <article class="work-item">
-        <div class="work-content">
-          <div class="work-cat">Lifecycle Marketing at Scale</div>
-          <h3 class="work-title">A/B testing across a 100,000+ contact subscription brand</h3>
-          <p class="work-desc">Implemented an A/B testing framework, design-system consistency, and message-clarity passes across automated flows.</p>
-          <div class="work-stats">
-            <div class="work-stat"><span class="work-stat-num">+12.5%</span><span class="work-stat-label">MoM conversions</span></div>
-            <div class="work-stat"><span class="work-stat-num">+44.3%</span><span class="work-stat-label">MoM activations</span></div>
-          </div>
-        </div>
-        <div class="work-media">
-          <!-- REPLACE WITH IMAGE: <img class="media-fill" src="work-5.jpg" alt="A/B test variants" /> -->
-          <div class="media-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20V8m6 12V4m6 16v-8m6 8V12"/></svg>
-            <span class="ph-label">Test variant set</span>
-            <span class="ph-hint">A/B comparison, image</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Work item 6 -->
-      <article class="work-item">
-        <div class="work-content">
-          <div class="work-cat">Organic Growth / DTC</div>
-          <h3 class="work-title">108% Instagram growth in seven months</h3>
-          <p class="work-desc">Created education-first content for an outdoor gear subscription brand through carousels and short-form video, paired with ManyChat automation, that turned engagement into subscription conversions and increased LTV.</p>
-          <div class="work-stats">
-            <div class="work-stat"><span class="work-stat-num">+108%</span><span class="work-stat-label">Instagram followers in 7 months</span></div>
-          </div>
-        </div>
-        <div class="work-media">
-          <!-- REPLACE WITH IMAGE/VIDEO -->
-          <div class="media-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
-            <span class="ph-label">Education carousel</span>
-            <span class="ph-hint">Image, video, or carousel</span>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- =====================================
-     WRITING SAMPLES
-     ===================================== -->
-<section class="section" id="writing">
-  <div class="wrap">
-    <h2 class="section-title">Writing Samples</h2>
-
-    <div class="writing-grid">
-
-      <!-- Writing sample 1 -->
-      <a class="writing-card" href="#" target="_blank" rel="noopener">
-        <span class="writing-tag">Blog · Marketing</span>
-        <h3 class="writing-title">[Blog Post Title #1]</h3>
-        <p class="writing-desc">Replace this with a one to two sentence description of the article. Speak to the angle, the audience, and what a reader walks away with.</p>
-        <span class="writing-link">Read article →</span>
-      </a>
-
-      <!-- Writing sample 2 -->
-      <a class="writing-card" href="#" target="_blank" rel="noopener">
-        <span class="writing-tag">Blog · Marketing</span>
-        <h3 class="writing-title">[Blog Post Title #2]</h3>
-        <p class="writing-desc">Replace this with a one to two sentence description of the article. Speak to the angle, the audience, and what a reader walks away with.</p>
-        <span class="writing-link">Read article →</span>
-      </a>
 
     </div>
   </div>
@@ -967,61 +840,243 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
     <div class="gallery-grid">
 
-      <div class="gallery-tile">
-        <div class="media-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
-          <span class="ph-label">Image</span>
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1l82AFF219-vcims8t_MoFSmxCNg7gwR2/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1l82AFF219-vcims8t_MoFSmxCNg7gwR2&sz=w800" alt="Acai TikTok Recipe" loading="lazy" />
         </div>
-      </div>
+        <p class="gallery-tile-caption">Acai · Recipe</p>
+      </a>
 
-      <div class="gallery-tile">
-        <div class="media-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
-          <span class="ph-label">Video</span>
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1QwlVtkMZzbkZ2VHS8-SAOol_4CTLwMZT/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1QwlVtkMZzbkZ2VHS8-SAOol_4CTLwMZT&sz=w800" alt="Golf Networking Paid Ad" loading="lazy" />
         </div>
-      </div>
+        <p class="gallery-tile-caption">Golf · Paid Ad</p>
+      </a>
 
-      <div class="gallery-tile">
-        <div class="media-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
-          <span class="ph-label">Image</span>
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1erDPb_KXD9icy-WhIXdHyS9TWWeRDn5-/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1erDPb_KXD9icy-WhIXdHyS9TWWeRDn5-&sz=w800" alt="Sports Team" loading="lazy" />
         </div>
-      </div>
+        <p class="gallery-tile-caption">Sports · Team</p>
+      </a>
 
-      <div class="gallery-tile">
-        <div class="media-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
-          <span class="ph-label">Video</span>
+      <a class="gallery-tile gallery-tile--email" href="https://drive.google.com/file/d/1-gx1PU0oaWKZtET2ljGt2RbMcEIqCq9y/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1-gx1PU0oaWKZtET2ljGt2RbMcEIqCq9y&sz=w800" alt="Outdoor Brand Email" loading="lazy" />
         </div>
-      </div>
+        <p class="gallery-tile-caption">Outdoor · Email</p>
+      </a>
 
-      <div class="gallery-tile">
-        <div class="media-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
-          <span class="ph-label">Image</span>
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/14p2S1nNOPbj78fZb2oWvn5TKKxlJwolj/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=14p2S1nNOPbj78fZb2oWvn5TKKxlJwolj&sz=w800" alt="Acai TikTok Scooping Trend" loading="lazy" />
         </div>
-      </div>
+        <p class="gallery-tile-caption">Acai · Scooping Trend</p>
+      </a>
 
-      <div class="gallery-tile">
-        <div class="media-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6,4 20,12 6,20"/></svg>
-          <span class="ph-label">Video</span>
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1QDL-MkVLyr4jR7pb8nihNEQCusnPQmYM/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1QDL-MkVLyr4jR7pb8nihNEQCusnPQmYM&sz=w800" alt="Warehouse BTS" loading="lazy" />
         </div>
-      </div>
+        <p class="gallery-tile-caption">Warehouse · BTS</p>
+      </a>
 
-      <div class="gallery-tile">
-        <div class="media-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
-          <span class="ph-label">Image</span>
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1KpXdGN2RnXF4TpfQ1F5RP7R1T1xdqukK/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1KpXdGN2RnXF4TpfQ1F5RP7R1T1xdqukK&sz=w800" alt="Athlete Signing Graphic" loading="lazy" />
         </div>
-      </div>
+        <p class="gallery-tile-caption">Athlete · Signing</p>
+      </a>
 
-      <div class="gallery-tile">
-        <div class="media-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg>
-          <span class="ph-label">Image</span>
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1_0nQqlbSIJhCvHcY7Nr6nHPOUH-lyGxf/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1_0nQqlbSIJhCvHcY7Nr6nHPOUH-lyGxf&sz=w800" alt="Brand Day" loading="lazy" />
         </div>
-      </div>
+        <p class="gallery-tile-caption">Brand · Day</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1Pt2v8zrzBe4s99lt3vC-ifhm-r_86e-E/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1Pt2v8zrzBe4s99lt3vC-ifhm-r_86e-E&sz=w800" alt="Reef Safe Carousel" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Reef Safe · Carousel</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1wF2EFPskomlzHeIMEvst6WpsM8OTm2SC/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1wF2EFPskomlzHeIMEvst6WpsM8OTm2SC&sz=w800" alt="Acai UGC Style" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Acai · UGC</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1ewTWkV4yLdFE8xJbkQ88vZCBscndJTOV/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1ewTWkV4yLdFE8xJbkQ88vZCBscndJTOV&sz=w800" alt="Influencer Partnership" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Influencer · Partnership</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1kKfSX4UVPhHkdoOHZbr517hzLOYQiCZg/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1kKfSX4UVPhHkdoOHZbr517hzLOYQiCZg&sz=w800" alt="Ad Style Father Son" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Father & Son · Ad</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1B-CNrQsKeDIby745-Lzq9dUth4qEvTNN/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1B-CNrQsKeDIby745-Lzq9dUth4qEvTNN&sz=w800" alt="Athlete Testimonial" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Athlete · Testimonial</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1SNo9QdYUFSOCCsOfH9-S4JOTmj4AOOQg/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1SNo9QdYUFSOCCsOfH9-S4JOTmj4AOOQg&sz=w800" alt="UGC Activation" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">UGC · Activation</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1_pkMqLtl_Qs_uoBiqigvMC-3oJzA3Xv4/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1_pkMqLtl_Qs_uoBiqigvMC-3oJzA3Xv4&sz=w800" alt="Sports Team Schedule Release" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Sports · Schedule Release</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1C3ih04HWmnmqJwZoNf-QN6P_SqwVDu5C/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1C3ih04HWmnmqJwZoNf-QN6P_SqwVDu5C&sz=w800" alt="Acai Brand Short Recipe" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Acai · Short Recipe</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1IaMzwh58ij8zY6GcU2um_3BzbUIqn35t/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1IaMzwh58ij8zY6GcU2um_3BzbUIqn35t&sz=w800" alt="Sunscreen Athlete Geometric" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Sunscreen · Geometric</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1vd_2wJdzgU5ftDMerzUIwHNbKs6txzz-/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1vd_2wJdzgU5ftDMerzUIwHNbKs6txzz-&sz=w800" alt="Carousel Highlight" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Carousel · Highlight</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1tBaHrfMb1cMnp5w1W6DQXg2xhiRbZPiG/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1tBaHrfMb1cMnp5w1W6DQXg2xhiRbZPiG&sz=w800" alt="FAQ" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">FAQ</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1O5RAbNgz5nwuTtxYf1Vmz280RjgoGuN2/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1O5RAbNgz5nwuTtxYf1Vmz280RjgoGuN2&sz=w800" alt="Army Meme Viral" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Army · Viral Meme</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/10irun6MFz_KNNV-aLTbG4PF4pXNf3WFI/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=10irun6MFz_KNNV-aLTbG4PF4pXNf3WFI&sz=w800" alt="Influencer Partnership Warmup" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Influencer · Warmup</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1y6OrGuJVxSnvJbw8l07yu8d2U0ZRDzSE/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1y6OrGuJVxSnvJbw8l07yu8d2U0ZRDzSE&sz=w800" alt="Sports Team Schedule Graphic" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Sports · Schedule</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1L06ViEzNQwiNy1nApnc5UpcG5I9tXWEh/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1L06ViEzNQwiNy1nApnc5UpcG5I9tXWEh&sz=w800" alt="Guess the Flavor Partnership" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Partnership · Guess the Flavor</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1vx2ouz_Mveig205q9fxz085Ubl8tOccX/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1vx2ouz_Mveig205q9fxz085Ubl8tOccX&sz=w800" alt="Winter Education Carousel" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Winter · Education</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--email" href="https://drive.google.com/file/d/164UC_hLHmrnXrP1pkuXsJEwonlbS-75Z/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=164UC_hLHmrnXrP1pkuXsJEwonlbS-75Z&sz=w800" alt="Agency Newsletter" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Agency · Newsletter</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1ZWjgSbSfZDwJr29d9wMZTdY8NyTsYyKW/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1ZWjgSbSfZDwJr29d9wMZTdY8NyTsYyKW&sz=w800" alt="In Store Promotion Meme" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">In-Store · Meme</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1utGQvbiAmp0sAlKqFuFzNx-HS1zDQoUs/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1utGQvbiAmp0sAlKqFuFzNx-HS1zDQoUs&sz=w800" alt="Checklist ManyChat" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">ManyChat · Checklist</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1MBPGznv8qbmMTqLGT6NRT_jpLjHXJtoN/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1MBPGznv8qbmMTqLGT6NRT_jpLjHXJtoN&sz=w800" alt="Golf Networking Testimonial" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Golf · Testimonial</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1h7HkWU9QO7Pv8-EUJOaXuEYqF8NxHtdo/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1h7HkWU9QO7Pv8-EUJOaXuEYqF8NxHtdo&sz=w800" alt="Acai TikTok POV" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Acai · POV</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1SQXZRd0I9XffB-VQQt0hhUBixPwcSi5F/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1SQXZRd0I9XffB-VQQt0hhUBixPwcSi5F&sz=w800" alt="Sunscreen Beach" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Sunscreen · Beach</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1EO0ZSWj7mCR700injXCwk3s9AbNAjTeh/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1EO0ZSWj7mCR700injXCwk3s9AbNAjTeh&sz=w800" alt="Bingo Hair Stylist" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Bingo · Hair</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1W4uhKFvmQYGsJIElrtiqjj2qQdOVgPA0/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1W4uhKFvmQYGsJIElrtiqjj2qQdOVgPA0&sz=w800" alt="Education Beauty" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Beauty · Education</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1suO-eCpGNTUOdJUDRS1LO8W9REJPsxd-/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1suO-eCpGNTUOdJUDRS1LO8W9REJPsxd-&sz=w800" alt="Carousel First Slide" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Carousel · First Slide</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1VJYGyDiXshmu-c_0uq-nRk4E9x3DPfES/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1VJYGyDiXshmu-c_0uq-nRk4E9x3DPfES&sz=w800" alt="Outdoors" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Outdoors</p>
+      </a>
 
     </div>
   </div>
@@ -1044,7 +1099,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
       <span>Video Editing</span>
       <span>Influencer Partnerships</span>
       <span>Brand Strategy</span>
-      <span>Marketing Research</span>
+      <span>Customer Journey</span>
       <span>Community Management</span>
       <span>Events Marketing</span>
       <span>Paid Social &amp; Search</span>
@@ -1094,7 +1149,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
       <div class="tool-group">
         <div class="tool-group-name">Analytics &amp; Data</div>
         <div class="tool-tags">
-          <span>Google Analytics</span><span>Tableau</span><span>PowerBI</span><span>Excel</span><span>Qualtrics</span><span>Survey Monkey</span><span>Python</span><span>MRI Simmons</span>
+          <span>Google Analytics</span><span>Tableau</span><span>PowerBI</span><span>Excel</span><span>Python</span><span>MRI Simmons</span>
         </div>
       </div>
 
@@ -1134,7 +1189,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 <script>
 (function() {
   if (!('IntersectionObserver' in window)) return;
-  const els = document.querySelectorAll('.section, .featured, .gallery-section, .work-item, .featured-tile, .gallery-tile, .writing-card, .tool-group, .contact');
+  const els = document.querySelectorAll('.section, .featured, .gallery-section, .work-item, .featured-tile, .gallery-tile, .tool-group, .contact');
   els.forEach(el => el.classList.add('fade-up'));
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
