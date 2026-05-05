@@ -206,7 +206,13 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease;
 }
+
+.featured-tile:hover { transform: translateY(-3px); }
+.featured-tile:hover .featured-tile-caption strong { color: var(--accent-hover); }
 
 .featured-tile-media {
   aspect-ratio: 4 / 5;
@@ -725,7 +731,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
     <div class="featured-grid">
 
       <!-- Featured tile 1: influencer partnership video -->
-      <div class="featured-tile">
+      <a class="featured-tile" href="https://drive.google.com/file/d/10irun6MFz_KNNV-aLTbG4PF4pXNf3WFI/view?usp=drive_link" target="_blank" rel="noopener">
         <div class="featured-tile-media">
           <video class="media-fill" autoplay muted loop playsinline preload="metadata">
             <source src="featured-1.mp4" type="video/mp4" />
@@ -735,23 +741,23 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
           <strong>Influencer Video Shoot · CPG</strong>
           Directed and edited a partnership between a high-profile golf creator and an outdoor sunscreen brand.
         </p>
-      </div>
+      </a>
 
       <!-- Featured tile 2: Unboxing video -->
-      <div class="featured-tile">
+      <a class="featured-tile" href="https://drive.google.com/file/d/1mWuaWxcWGhYGUw_GdFK_Ql0UE3oJDIoQ/view?usp=drive_link" target="_blank" rel="noopener">
         <div class="featured-tile-media">
           <video class="media-fill" autoplay muted loop playsinline preload="metadata">
             <source src="featured-2.mp4" type="video/mp4" />
           </video>
         </div>
         <p class="featured-tile-caption">
-          <strong>Unboxing · DTC</strong>
+          <strong>Unboxing · Beauty-Tech</strong>
           A short-form unboxing edit that primed first impressions of the product.
         </p>
-      </div>
+      </a>
 
       <!-- Featured tile 3: Sports Highlight video -->
-      <div class="featured-tile">
+      <a class="featured-tile" href="https://drive.google.com/file/d/1Zgj2BATCuTCP2WjRlpqgDmKqTUdiGrzP/view?usp=drive_link" target="_blank" rel="noopener">
         <div class="featured-tile-media">
           <video class="media-fill" autoplay muted loop playsinline preload="metadata">
             <source src="featured-3.mp4" type="video/mp4" />
@@ -761,7 +767,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
           <strong>Highlight · Sports</strong>
           Gameday highlight edit captured and cut for social.
         </p>
-      </div>
+      </a>
 
     </div>
   </div>
@@ -794,7 +800,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
       <!-- Work item 2: UGC video tuned to customer pain points -->
       <article class="work-item">
         <div class="work-content">
-          <div class="work-cat">Video / UGC Strategy</div>
+          <div class="work-cat">Video / Strategy / Beauty-Tech</div>
           <h3 class="work-title">UGC video tuned to customer pain points</h3>
           <p class="work-desc">Conceptualized, filmed, and edited UGC-style short-form video built around real customer pain points.</p>
           <div class="work-stats">
@@ -812,7 +818,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
       <!-- Work item 3: Email program rebuilt for mobile-first audiences -->
       <article class="work-item">
         <div class="work-content">
-          <div class="work-cat">Email / CRM</div>
+          <div class="work-cat">Retention / Sports</div>
           <h3 class="work-title">Email program rebuilt for mobile-first audiences</h3>
           <p class="work-desc">Reworked a client's email program around mobile-first design and a sharper editorial voice. Cleaner hierarchy, fewer asks per send, and copy that earned the click.</p>
           <div class="work-stats">
@@ -840,11 +846,18 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
     <div class="gallery-grid">
 
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1QDL-MkVLyr4jR7pb8nihNEQCusnPQmYM/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1QDL-MkVLyr4jR7pb8nihNEQCusnPQmYM&sz=w800" alt="Warehouse BTS" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Subscription · Service</p>
+      </a>
+
       <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1l82AFF219-vcims8t_MoFSmxCNg7gwR2/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media is-video">
           <img src="https://drive.google.com/thumbnail?id=1l82AFF219-vcims8t_MoFSmxCNg7gwR2&sz=w800" alt="Acai TikTok Recipe" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Acai · Recipe</p>
+        <p class="gallery-tile-caption">Food · Recipe</p>
       </a>
 
       <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1QwlVtkMZzbkZ2VHS8-SAOol_4CTLwMZT/view" target="_blank" rel="noopener">
@@ -854,11 +867,25 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
         <p class="gallery-tile-caption">Golf · Paid Ad</p>
       </a>
 
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1_pkMqLtl_Qs_uoBiqigvMC-3oJzA3Xv4/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1_pkMqLtl_Qs_uoBiqigvMC-3oJzA3Xv4&sz=w800" alt="Sports Team Schedule Release" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Sports · Schedule Video</p>
+      </a>
+
       <a class="gallery-tile" href="https://drive.google.com/file/d/1erDPb_KXD9icy-WhIXdHyS9TWWeRDn5-/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media">
           <img src="https://drive.google.com/thumbnail?id=1erDPb_KXD9icy-WhIXdHyS9TWWeRDn5-&sz=w800" alt="Sports Team" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Sports · Team</p>
+        <p class="gallery-tile-caption">Sports · Events</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1B-CNrQsKeDIby745-Lzq9dUth4qEvTNN/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1B-CNrQsKeDIby745-Lzq9dUth4qEvTNN&sz=w800" alt="Athlete Testimonial" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Athlete · Testimonial</p>
       </a>
 
       <a class="gallery-tile gallery-tile--email" href="https://drive.google.com/file/d/1-gx1PU0oaWKZtET2ljGt2RbMcEIqCq9y/view" target="_blank" rel="noopener">
@@ -868,46 +895,39 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
         <p class="gallery-tile-caption">Outdoor · Email</p>
       </a>
 
-      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/14p2S1nNOPbj78fZb2oWvn5TKKxlJwolj/view" target="_blank" rel="noopener">
-        <div class="gallery-tile-media is-video">
-          <img src="https://drive.google.com/thumbnail?id=14p2S1nNOPbj78fZb2oWvn5TKKxlJwolj&sz=w800" alt="Acai TikTok Scooping Trend" loading="lazy" />
-        </div>
-        <p class="gallery-tile-caption">Acai · Scooping Trend</p>
-      </a>
-
-      <a class="gallery-tile" href="https://drive.google.com/file/d/1QDL-MkVLyr4jR7pb8nihNEQCusnPQmYM/view" target="_blank" rel="noopener">
-        <div class="gallery-tile-media is-video">
-          <img src="https://drive.google.com/thumbnail?id=1QDL-MkVLyr4jR7pb8nihNEQCusnPQmYM&sz=w800" alt="Warehouse BTS" loading="lazy" />
-        </div>
-        <p class="gallery-tile-caption">Warehouse · BTS</p>
-      </a>
-
-      <a class="gallery-tile" href="https://drive.google.com/file/d/1KpXdGN2RnXF4TpfQ1F5RP7R1T1xdqukK/view" target="_blank" rel="noopener">
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1vd_2wJdzgU5ftDMerzUIwHNbKs6txzz-/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media">
-          <img src="https://drive.google.com/thumbnail?id=1KpXdGN2RnXF4TpfQ1F5RP7R1T1xdqukK&sz=w800" alt="Athlete Signing Graphic" loading="lazy" />
+          <img src="https://drive.google.com/thumbnail?id=1vd_2wJdzgU5ftDMerzUIwHNbKs6txzz-&sz=w800" alt="Carousel Highlight" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Athlete · Signing</p>
+        <p class="gallery-tile-caption">Carousel · Highlight</p>
       </a>
 
       <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1_0nQqlbSIJhCvHcY7Nr6nHPOUH-lyGxf/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media is-video">
           <img src="https://drive.google.com/thumbnail?id=1_0nQqlbSIJhCvHcY7Nr6nHPOUH-lyGxf&sz=w800" alt="Brand Day" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Brand · Day</p>
+        <p class="gallery-tile-caption">Compilation · CPG</p>
       </a>
 
-      <a class="gallery-tile" href="https://drive.google.com/file/d/1Pt2v8zrzBe4s99lt3vC-ifhm-r_86e-E/view" target="_blank" rel="noopener">
-        <div class="gallery-tile-media">
-          <img src="https://drive.google.com/thumbnail?id=1Pt2v8zrzBe4s99lt3vC-ifhm-r_86e-E&sz=w800" alt="Reef Safe Carousel" loading="lazy" />
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1W4uhKFvmQYGsJIElrtiqjj2qQdOVgPA0/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=1W4uhKFvmQYGsJIElrtiqjj2qQdOVgPA0&sz=w800" alt="Education Beauty" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Reef Safe · Carousel</p>
+        <p class="gallery-tile-caption">Beauty · Education</p>
       </a>
 
       <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1wF2EFPskomlzHeIMEvst6WpsM8OTm2SC/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media is-video">
           <img src="https://drive.google.com/thumbnail?id=1wF2EFPskomlzHeIMEvst6WpsM8OTm2SC&sz=w800" alt="Acai UGC Style" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Acai · UGC</p>
+        <p class="gallery-tile-caption">Food · UGC</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1Pt2v8zrzBe4s99lt3vC-ifhm-r_86e-E/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1Pt2v8zrzBe4s99lt3vC-ifhm-r_86e-E&sz=w800" alt="Reef Safe Carousel" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Education · Carousel</p>
       </a>
 
       <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1ewTWkV4yLdFE8xJbkQ88vZCBscndJTOV/view" target="_blank" rel="noopener">
@@ -921,35 +941,14 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
         <div class="gallery-tile-media">
           <img src="https://drive.google.com/thumbnail?id=1kKfSX4UVPhHkdoOHZbr517hzLOYQiCZg&sz=w800" alt="Ad Style Father Son" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Father & Son · Ad</p>
-      </a>
-
-      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1B-CNrQsKeDIby745-Lzq9dUth4qEvTNN/view" target="_blank" rel="noopener">
-        <div class="gallery-tile-media is-video">
-          <img src="https://drive.google.com/thumbnail?id=1B-CNrQsKeDIby745-Lzq9dUth4qEvTNN&sz=w800" alt="Athlete Testimonial" loading="lazy" />
-        </div>
-        <p class="gallery-tile-caption">Athlete · Testimonial</p>
-      </a>
-
-      <a class="gallery-tile" href="https://drive.google.com/file/d/1SNo9QdYUFSOCCsOfH9-S4JOTmj4AOOQg/view" target="_blank" rel="noopener">
-        <div class="gallery-tile-media">
-          <img src="https://drive.google.com/thumbnail?id=1SNo9QdYUFSOCCsOfH9-S4JOTmj4AOOQg&sz=w800" alt="UGC Activation" loading="lazy" />
-        </div>
-        <p class="gallery-tile-caption">UGC · Activation</p>
-      </a>
-
-      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1_pkMqLtl_Qs_uoBiqigvMC-3oJzA3Xv4/view" target="_blank" rel="noopener">
-        <div class="gallery-tile-media is-video">
-          <img src="https://drive.google.com/thumbnail?id=1_pkMqLtl_Qs_uoBiqigvMC-3oJzA3Xv4&sz=w800" alt="Sports Team Schedule Release" loading="lazy" />
-        </div>
-        <p class="gallery-tile-caption">Sports · Schedule Release</p>
+        <p class="gallery-tile-caption">Outdoors · Ad</p>
       </a>
 
       <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1C3ih04HWmnmqJwZoNf-QN6P_SqwVDu5C/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media is-video">
           <img src="https://drive.google.com/thumbnail?id=1C3ih04HWmnmqJwZoNf-QN6P_SqwVDu5C&sz=w800" alt="Acai Brand Short Recipe" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Acai · Short Recipe</p>
+        <p class="gallery-tile-caption">Food · Short Recipe</p>
       </a>
 
       <a class="gallery-tile" href="https://drive.google.com/file/d/1IaMzwh58ij8zY6GcU2um_3BzbUIqn35t/view" target="_blank" rel="noopener">
@@ -959,74 +958,81 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
         <p class="gallery-tile-caption">Sunscreen · Geometric</p>
       </a>
 
-      <a class="gallery-tile" href="https://drive.google.com/file/d/1vd_2wJdzgU5ftDMerzUIwHNbKs6txzz-/view" target="_blank" rel="noopener">
-        <div class="gallery-tile-media">
-          <img src="https://drive.google.com/thumbnail?id=1vd_2wJdzgU5ftDMerzUIwHNbKs6txzz-&sz=w800" alt="Carousel Highlight" loading="lazy" />
-        </div>
-        <p class="gallery-tile-caption">Carousel · Highlight</p>
-      </a>
-
       <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1tBaHrfMb1cMnp5w1W6DQXg2xhiRbZPiG/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media is-video">
           <img src="https://drive.google.com/thumbnail?id=1tBaHrfMb1cMnp5w1W6DQXg2xhiRbZPiG&sz=w800" alt="FAQ" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">FAQ</p>
+        <p class="gallery-tile-caption">Outdoors · FAQ</p>
       </a>
 
       <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1O5RAbNgz5nwuTtxYf1Vmz280RjgoGuN2/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media is-video">
           <img src="https://drive.google.com/thumbnail?id=1O5RAbNgz5nwuTtxYf1Vmz280RjgoGuN2&sz=w800" alt="Army Meme Viral" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Army · Viral Meme</p>
-      </a>
-
-      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/10irun6MFz_KNNV-aLTbG4PF4pXNf3WFI/view" target="_blank" rel="noopener">
-        <div class="gallery-tile-media is-video">
-          <img src="https://drive.google.com/thumbnail?id=10irun6MFz_KNNV-aLTbG4PF4pXNf3WFI&sz=w800" alt="Influencer Partnership Warmup" loading="lazy" />
-        </div>
-        <p class="gallery-tile-caption">Influencer · Warmup</p>
+        <p class="gallery-tile-caption">Army · Meme</p>
       </a>
 
       <a class="gallery-tile" href="https://drive.google.com/file/d/1y6OrGuJVxSnvJbw8l07yu8d2U0ZRDzSE/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media">
           <img src="https://drive.google.com/thumbnail?id=1y6OrGuJVxSnvJbw8l07yu8d2U0ZRDzSE&sz=w800" alt="Sports Team Schedule Graphic" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Sports · Schedule</p>
+        <p class="gallery-tile-caption">Sports · Schedule Graphic</p>
       </a>
 
       <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1L06ViEzNQwiNy1nApnc5UpcG5I9tXWEh/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media is-video">
           <img src="https://drive.google.com/thumbnail?id=1L06ViEzNQwiNy1nApnc5UpcG5I9tXWEh&sz=w800" alt="Guess the Flavor Partnership" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Partnership · Guess the Flavor</p>
+        <p class="gallery-tile-caption">Sports · Partnership</p>
       </a>
 
       <a class="gallery-tile" href="https://drive.google.com/file/d/1vx2ouz_Mveig205q9fxz085Ubl8tOccX/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media">
           <img src="https://drive.google.com/thumbnail?id=1vx2ouz_Mveig205q9fxz085Ubl8tOccX&sz=w800" alt="Winter Education Carousel" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Winter · Education</p>
+        <p class="gallery-tile-caption">Education · Carousel</p>
       </a>
 
       <a class="gallery-tile gallery-tile--email" href="https://drive.google.com/file/d/164UC_hLHmrnXrP1pkuXsJEwonlbS-75Z/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media">
           <img src="https://drive.google.com/thumbnail?id=164UC_hLHmrnXrP1pkuXsJEwonlbS-75Z&sz=w800" alt="Agency Newsletter" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Agency · Newsletter</p>
+        <p class="gallery-tile-caption">Marketing · Newsletter</p>
       </a>
 
       <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1ZWjgSbSfZDwJr29d9wMZTdY8NyTsYyKW/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media is-video">
           <img src="https://drive.google.com/thumbnail?id=1ZWjgSbSfZDwJr29d9wMZTdY8NyTsYyKW&sz=w800" alt="In Store Promotion Meme" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">In-Store · Meme</p>
+        <p class="gallery-tile-caption">Retail · Meme</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1SNo9QdYUFSOCCsOfH9-S4JOTmj4AOOQg/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1SNo9QdYUFSOCCsOfH9-S4JOTmj4AOOQg&sz=w800" alt="UGC Activation" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">UGC · Activation</p>
       </a>
 
       <a class="gallery-tile" href="https://drive.google.com/file/d/1utGQvbiAmp0sAlKqFuFzNx-HS1zDQoUs/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media">
           <img src="https://drive.google.com/thumbnail?id=1utGQvbiAmp0sAlKqFuFzNx-HS1zDQoUs&sz=w800" alt="Checklist ManyChat" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">ManyChat · Checklist</p>
+        <p class="gallery-tile-caption">ManyChat · Carousel</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/10irun6MFz_KNNV-aLTbG4PF4pXNf3WFI/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=10irun6MFz_KNNV-aLTbG4PF4pXNf3WFI&sz=w800" alt="Influencer Partnership Warmup" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Influencer Partnership · CPG</p>
+      </a>
+
+      <a class="gallery-tile" href="https://drive.google.com/file/d/1KpXdGN2RnXF4TpfQ1F5RP7R1T1xdqukK/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media">
+          <img src="https://drive.google.com/thumbnail?id=1KpXdGN2RnXF4TpfQ1F5RP7R1T1xdqukK&sz=w800" alt="Athlete Signing Graphic" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Announcement · Sports</p>
       </a>
 
       <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1MBPGznv8qbmMTqLGT6NRT_jpLjHXJtoN/view" target="_blank" rel="noopener">
@@ -1040,42 +1046,42 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
         <div class="gallery-tile-media is-video">
           <img src="https://drive.google.com/thumbnail?id=1h7HkWU9QO7Pv8-EUJOaXuEYqF8NxHtdo&sz=w800" alt="Acai TikTok POV" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Acai · POV</p>
+        <p class="gallery-tile-caption">Food · UGC Style</p>
+      </a>
+
+      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/14p2S1nNOPbj78fZb2oWvn5TKKxlJwolj/view" target="_blank" rel="noopener">
+        <div class="gallery-tile-media is-video">
+          <img src="https://drive.google.com/thumbnail?id=14p2S1nNOPbj78fZb2oWvn5TKKxlJwolj&sz=w800" alt="Acai TikTok Scooping Trend" loading="lazy" />
+        </div>
+        <p class="gallery-tile-caption">Food · Scooping Trend</p>
       </a>
 
       <a class="gallery-tile" href="https://drive.google.com/file/d/1SQXZRd0I9XffB-VQQt0hhUBixPwcSi5F/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media">
           <img src="https://drive.google.com/thumbnail?id=1SQXZRd0I9XffB-VQQt0hhUBixPwcSi5F&sz=w800" alt="Sunscreen Beach" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Sunscreen · Beach</p>
+        <p class="gallery-tile-caption">CPG · Beach</p>
       </a>
 
       <a class="gallery-tile" href="https://drive.google.com/file/d/1EO0ZSWj7mCR700injXCwk3s9AbNAjTeh/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media">
           <img src="https://drive.google.com/thumbnail?id=1EO0ZSWj7mCR700injXCwk3s9AbNAjTeh&sz=w800" alt="Bingo Hair Stylist" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Bingo · Hair</p>
-      </a>
-
-      <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1W4uhKFvmQYGsJIElrtiqjj2qQdOVgPA0/view" target="_blank" rel="noopener">
-        <div class="gallery-tile-media is-video">
-          <img src="https://drive.google.com/thumbnail?id=1W4uhKFvmQYGsJIElrtiqjj2qQdOVgPA0&sz=w800" alt="Education Beauty" loading="lazy" />
-        </div>
-        <p class="gallery-tile-caption">Beauty · Education</p>
+        <p class="gallery-tile-caption">Beauty · Engagement</p>
       </a>
 
       <a class="gallery-tile" href="https://drive.google.com/file/d/1suO-eCpGNTUOdJUDRS1LO8W9REJPsxd-/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media">
           <img src="https://drive.google.com/thumbnail?id=1suO-eCpGNTUOdJUDRS1LO8W9REJPsxd-&sz=w800" alt="Carousel First Slide" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Carousel · First Slide</p>
+        <p class="gallery-tile-caption">Beauty · Carousel</p>
       </a>
 
       <a class="gallery-tile gallery-tile--tall" href="https://drive.google.com/file/d/1VJYGyDiXshmu-c_0uq-nRk4E9x3DPfES/view" target="_blank" rel="noopener">
         <div class="gallery-tile-media is-video">
           <img src="https://drive.google.com/thumbnail?id=1VJYGyDiXshmu-c_0uq-nRk4E9x3DPfES&sz=w800" alt="Outdoors" loading="lazy" />
         </div>
-        <p class="gallery-tile-caption">Outdoors</p>
+        <p class="gallery-tile-caption">CPG · Lifestyle</p>
       </a>
 
     </div>
